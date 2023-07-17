@@ -2,7 +2,7 @@ function getComputerChoice() {
   const gameChoice = ["rock", "paper", "scissors"];
   let randomChoice = gameChoice[Math.floor(Math.random() * gameChoice.length)];
   
-  console.log(randomChoice);
+  console.log(`computer pick: ${randomChoice}`);
   return randomChoice;
 }
 
@@ -38,6 +38,23 @@ function playRound(playerSelection, computerSelection) {
 
 }
  
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+  let playerWinCount = 0;
+  
+  for (let i = 0; i < 5; i++) {
+    const playerSelection = prompt("Pick one of the following; rock, paper or scissors").toLowerCase();
+    const computerSelection = getComputerChoice();
+
+    console.log(playRound(playerSelection, computerSelection));
+  
+    // TODO: implement player win count
+    // if (playRound(playerSelection, computerSelection) == /You Win!*/) {
+    //   playerWinCount++;
+    //   console.log("menang coy")
+    // }
+  }
+
+  // console.log(playerWinCount);
+}
+
+game();
