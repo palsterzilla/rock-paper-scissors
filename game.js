@@ -1,10 +1,7 @@
 function getComputerChoice() {
   const gameChoice = ["rock", "paper", "scissors"];
   let randomChoice = gameChoice[Math.floor(Math.random() * gameChoice.length)];
-  
-  // just a helper, delete later
-  console.log(`computer pick: ${randomChoice}`);
-  
+    
   return randomChoice;
 }
 
@@ -44,12 +41,11 @@ function game() {
   let playerWinCount = 0;
   let computerWinCount = 0;
   
-  for (let i = 0; i < 5; i++) {
+  for (let i = 1; i <= 5; i++) {
     const playerSelection = prompt("Pick one of the following; rock, paper or scissors").toLowerCase();
     const computerSelection = getComputerChoice();
-    // const computerSelection = "rock";
 
-    console.log(playRound(playerSelection, computerSelection));
+    console.log(`Round ${i}: ${playRound(playerSelection, computerSelection)}`);
     
     if (/You Win/.test(`${playRound(playerSelection, computerSelection)}`)) {
       playerWinCount++;
@@ -58,9 +54,14 @@ function game() {
     }
   }
   
-  // TODO: implement when win lose or draw
-  let result = playerWinCount > computerWinCount ? "Player Win!" : "Computer Win!";
-  console.log(result);
+  if (playerWinCount > computerWinCount ) {
+    return console.log("Player Win!")
+  } else if (playerWinCount < computerWinCount) {
+    return console.log("Computer Win!")
+  } else {
+    return console.log("Draw!")
+  }
+
 }
 
 game();
