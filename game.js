@@ -7,32 +7,27 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
   const playerWin = `You Win! ${playerSelection} beats ${computerSelection}`;
-  const playerLose = `You Lose! ${computerSelection} beats ${playerSelection}`;
-  
-  if (playerSelection == "rock") {
-    if (computerSelection == "paper") {
-      return playerLose;
-    } else if (computerSelection == "scissors") {
-      return playerWin;
-    } else {
-      return "Draw";
-    }
-  } else if (playerSelection == "scissors") {
-      if (computerSelection == "rock") {
-        return playerLose;
-      } else if (computerSelection == "paper") {
-          return playerWin;
-      } else {
-        return "Draw";
-      }
-  } else if (playerSelection == "paper") {
-    if (computerSelection == "scissors") {
-      return playerLose;
-    } else if (computerSelection == "rock") {
-        return playerWin;
-    } else {
-      return "Draw";
-    }
+  const playerLose = `You Lose! ${computerSelection} beats ${playerSelection}`;  
+
+  if (playerSelection == computerSelection) {
+    return "Draw"
+
+  } else if (
+      (playerSelection == "rock" && computerSelection == "paper") ||
+      (playerSelection == "paper" && computerSelection == "scissors") ||
+      (playerSelection == "scissors" && computerSelection == "rock")) {
+
+        return playerLose
+
+  } else if (
+      (computerSelection == "rock" && playerSelection == "paper") ||
+      (computerSelection == "paper" && playerSelection == "scissors") ||
+      (computerSelection == "scissors" && playerSelection == "rock")) {
+        
+        return playerWin
+
+  } else {
+    return "Incorrect typing!"
   }
 
 }
@@ -64,4 +59,5 @@ function game() {
 
 }
 
-// game();
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => button.addEventListener("click", game))
