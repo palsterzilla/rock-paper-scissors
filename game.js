@@ -19,22 +19,39 @@ function playRound(playerSelection, computerSelection) {
       ++computerWinCount
       computerScore.textContent = computerWinCount;
       console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)
+      
+    } else if (
+      (computerSelection === "rock" && playerSelection === "paper") ||
+      (computerSelection === "paper" && playerSelection === "scissors") ||
+      (computerSelection === "scissors" && playerSelection === "rock")) {
+        
+        ++playerWinCount
+        playerScore.textContent = playerWinCount;        
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
+      
+    }
+    
+  if (playerWinCount === 5) {
+    alert("You Win! Congratulation!")
+    gameReset()
 
-  } else if (
-    (computerSelection === "rock" && playerSelection === "paper") ||
-    (computerSelection === "paper" && playerSelection === "scissors") ||
-    (computerSelection === "scissors" && playerSelection === "rock")) {
-
-      ++playerWinCount
-      playerScore.textContent = playerWinCount;        
-      console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
-
-  } else {
-    console.log("Incorrect typing!")
+  } else if (computerWinCount === 5) {
+    alert("You Lose! Better luck next time!")
+    gameReset()
 
   }
 }
  
+function gameReset() {
+  playerScore.textContent = 0;
+  computerScore.textContent = 0;
+  tieScore.textContent = 0;
+
+  playerWinCount = 0;
+  computerWinCount = 0;
+  tieCount = 0;
+}
+
 let playerWinCount = 0;
 let computerWinCount = 0;
 let tieCount = 0;
